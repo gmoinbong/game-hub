@@ -8,9 +8,10 @@ import { Button, Spinner } from '@chakra-ui/react'
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useData<Genre>('/genres')
   if (error) return null
   if (isLoading) return <Spinner />
@@ -18,7 +19,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
     <List >{data.map(genre => <ListItem paddingY='5px' key={genre.id}>
       <HStack>
         <Image boxSize='32px' borderRadius={8} src={getCroppedImageUrl(genre.image_background)} />
-        <Button onClick={() => onSelectGenre(genre)} fontSize='large'>{genre.name}</Button>
+        <Button cursor='pointer' fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'} onClick={() => onSelectGenre(genre)} fontSize='large'>{genre.name}</Button>
       </HStack>
     </ListItem>)
     }
@@ -27,3 +28,4 @@ const GenreList = ({ onSelectGenre }: Props) => {
 }
 
 export default GenreList
+
