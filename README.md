@@ -26,7 +26,7 @@ Game Hub is built using the following technologies:
 
 ## Screenshots
 
-![Main](https://github.com/gmoinbong/game-hub/tree/master/screenshots)
+![Main](https://github.com/gmoinbong/game-hub/blob/master/screenshots/Main.png)
 
 ## Project Demo
 
